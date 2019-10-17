@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2019 by cnqinglin (http://jsbin.com/lesusin/2/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>VanillaJs（Redux之思路举例）</title>
+</head>
+<body>
+  <div id="app">
+    
+  </div>
+    
+  <script src="https://cdn.bootcss.com/redux/4.0.4/redux.min.js"></script>
+  
+  <script>
+      function add1(){
+        store.dispatch({type:'add'})//更新store
+      }
+    
+    
+    
+      function render(store){
+          var app = document.querySelector('#app')
+          app.innerHTML = `
+                <div>
+                  你点击了<span id="value">${store.getState()}</span> //获取store
+                  <div>
+                    <button id="add1" onclick="add1()">+1</button>
+                    <button id="minus1">-1</button>
+                    <button id='add1IfOdd'>如果是单数就+1</button>
+                    <button id="add1After2Sec">两秒钟后+1</button>
+                </div>
+              </div>
+            `
+      }
+      
+      
+      
+      function stateChanger(state,action){
+         if(state === undefined){
+           return 0
+         }else{
+           if(action.type === 'add'){
+             var newState = state + 1
+             return newState
+           }else{
+             return state
+           }
+         }
+      }
+      var store = Redux.createStore(stateChanger)
+      render(store)
+      store.subscribe(()=>{
+        render(store)
+      })
+  </script>
+  
+</body>
+</html>

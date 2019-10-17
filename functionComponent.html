@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2019 by cnqinglin (http://jsbin.com/kajuqek/4/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>react之函数组件</title>
+  <script src="https://cdn.bootcss.com/react/16.9.0-rc.0/umd/react.production.min.js"></script>
+  <script src="https://cdn.bootcss.com/react-dom/16.9.0-rc.0/umd/react-dom.production.min.js"></script>
+  <style id="jsbin-css">
+span{
+  display:inline-block;
+  border:1px solid black;
+  height:20px;
+  margin-top:10px;
+  margin-left:20px;
+  margin-right:20px;
+}
+button{
+  display:inline-block;
+  border:1px solid green;
+}
+.parent{
+  padding-top:8px;
+  padding-bottom:10px;
+  border:1px solid red;
+}
+</style>
+</head>
+<body>
+    <div id="root">
+       
+    </div>
+<script id="jsbin-javascript">
+let number = 0
+
+add =()=>{
+  number += 1
+  render()
+}
+
+minus =()=>{
+  number -= 1
+  render()
+}
+ 
+ //一部分页面标签放在一个函数里
+function App(){
+  return (
+    <div>
+      <Box1 name="加一" />
+    </div>
+  )
+}
+
+function Box1(obj){
+  return (
+    <div class="parent">
+    我的名字是{obj.name}
+    <hr />
+      <span>{number}</span>
+      <button onClick={add}>+</button>
+      <button onClick={minus}>-</button>
+    </div>
+  )
+}
+
+
+render()
+
+function render(){
+  
+  ReactDOM.render(
+      //虚拟DOM，本质就是对象
+      
+      
+      <App/>, //这是XML语法
+      
+      
+      document.querySelector('#root'))
+}
+
+
+
+
+</script>
+</body>
+</html>
